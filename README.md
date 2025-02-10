@@ -1,66 +1,135 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h2>Laravel Admin CMS Portal</h2>
 
-## About Laravel
+<h3>Opis</h3>
+<p>Ovaj projekt predstavlja Laravel Admin CMS za portal koji se sastoji od <strong>korisnika</strong>, <strong>proizvoda</strong>, <strong>kategorija</strong> i <strong>komentara</strong>. CMS omogućava administraciju tih entiteta, dok frontend omogućava korisnicima dodavanje komentara uz ocjene bez potrebe za registracijom.</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h3>Funkcionalnosti</h3>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h4>Admin CMS</h4>
+<ul>
+  <li><strong>Login funkcionalnost</strong>: Admini i moderatori mogu se prijaviti u Admin CMS koristeći Laravel autentifikaciju.</li>
+  <li><strong>Korisnici i Rola</strong>: Admini mogu kreirati nove korisnike sa rolama (admin, moderator).</li>
+  <li><strong>Kategorije</strong>: Admini mogu dodavati, uređivati i brisati kategorije. Kategorije mogu imati do 3 nivoa dubine.</li>
+  <li><strong>Proizvodi</strong>: Admini mogu dodavati, uređivati i brisati proizvode. Proizvodi mogu imati više slika sa mogućnošću označavanja glavne slike. Svaki proizvod može imati jednu ili više kategorija, opis i cijenu.</li>
+  <li><strong>Komentari</strong>: Admini i moderatori mogu uređivati i brisati komentare. Komentari mogu imati ocjenu i tekst.</li>
+</ul>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h4>Frontend i REST API</h4>
+<ul>
+  <li><strong>REST API Endpoint-ovi</strong>:
+    <ul>
+      <li>GET /categories: Prikaz svih kategorija.</li>
+      <li>GET /categories/{id}: Prikaz pojedinačne kategorije.</li>
+      <li>GET /products: Prikaz svih proizvoda.</li>
+      <li>GET /products/{id}: Prikaz pojedinačnog proizvoda.</li>
+      <li>POST /comments: Dodavanje komentara uz ocjenu.</li>
+    </ul>
+  </li>
+  <li><strong>Rola Admin</strong>: Admin ima potpunu kontrolu nad svim entitetima.</li>
+  <li><strong>Rola Moderator</strong>: Moderator može samo uređivati i brisati komentare.</li>
+</ul>
 
-## Learning Laravel
+<hr>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h3>Upute za Pokretanje</h3>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<h4>Preduvjeti</h4>
+<ol>
+  <li><strong>Instalacija PHP-a</strong>: Laravel zahtijeva <strong>PHP 8.0 ili noviji</strong>.</li>
+  <li><strong>Instalacija Composer-a</strong>: Trebaš imati instaliran Composer za instalaciju Laravel zavisnosti.</li>
+</ol>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<h4>Instalacija</h4>
+<ol>
+  <li><strong>Kloniraj repozitorij</strong>:
 
-## Laravel Sponsors
+    git clone https://github.com/your-username/your-repository.git
+cd your-repository
+  </li>
+  <li><strong>Instaliraj zavisnosti</strong>:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    composer install
+  </li>
+  <li><strong>Postavi .env datoteku</strong>:
 
-### Premium Partners
+    Kopiraj .env.example u .env datoteku:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    cp .env.example .env
+  </li>
+  <li><strong>Generiraj aplikacijski ključ</strong>:
 
-## Contributing
+    php artisan key:generate
+  </li>
+  <li><strong>Postavi bazu podataka</strong>:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    Provjeri .env datoteku i postavi parametre za bazu podataka:
 
-## Code of Conduct
+    DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ime_baze
+DB_USERNAME=root
+DB_PASSWORD=
+  </li>
+  <li><strong>Migriraj bazu podataka</strong>:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    Pokreni migracije za stvaranje potrebnih tabela:
 
-## Security Vulnerabilities
+    php artisan migrate
+  </li>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+  <li><strong> Pokreni seeder baze podataka</strong>:
 
-## License
+   U UserSeederu pronađi email i password korsnika za incijalnu prijavu
+   
+   php artisan db:seed
+    
+  </li>
+  <li><strong>Pokreni razvojni server</strong>:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Da bi pokrenuo aplikaciju na svom računaru, koristi:
+
+    php artisan serve
+
+    Posjeti aplikaciju na [http://localhost:8000](http://localhost:8000).
+  </li>
+</ol>
+
+<hr>
+
+<h3>Razvoj</h3>
+
+<h4>Dodavanje Novih Proizvoda</h4>
+<ol>
+  <li>Proizvodi se mogu dodavati putem Admin CMS-a.</li>
+  <li>Svaki proizvod treba imati naziv, opis, cijenu, i može biti dodan u jednu ili više kategorija.</li>
+  <li>Admini mogu dodavati slike proizvoda i označiti glavnu sliku.</li>
+</ol>
+
+<h4>Upravljanje Kategorijama</h4>
+<ul>
+  <li>Kategorije su hijerarhijski organizovane i mogu imati do 3 nivoa dubine.</li>
+  <li>Admin može dodavati, uređivati i brisati kategorije putem Admin CMS-a.</li>
+</ul>
+
+<h4>Komentari</h4>
+<ul>
+  <li>Korisnici mogu dodavati komentare uz ocjenu za proizvode putem frontend interfejsa.</li>
+  <li>Moderatori i admini mogu uređivati i brisati komentare putem Admin CMS-a.</li>
+</ul>
+
+<hr>
+
+<h3>Tehnologije</h3>
+<ul>
+  <li><strong>Laravel</strong>: PHP framework za izradu web aplikacija.</li>
+  <li><strong>MySQL</strong>: Relacijska baza podataka za pohranu podataka.</li>
+  <li><strong>Composer</strong>: Alat za upravljanje PHP paketima i zavisnostima.</li>
+  <li><strong>REST API</strong>: Omogućava interakciju s podacima putem HTTP metoda (GET, POST).</li>
+</ul>
+
+<hr>
+
+<h3>Zaključak</h3>
+<p>Ovaj projekt je jednostavan CMS za upravljanje portalom koji omogućava osnovnu administraciju proizvoda, kategorija i komentara. Također, omogućava filtriranje proizvoda i dodavanje komentara bez potrebe za registracijom.</p>
