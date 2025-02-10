@@ -4,7 +4,7 @@
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    @if(Auth::user()->role === 'admin')
+                    @if(auth()->user()->hasRole('admin'))
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
@@ -20,13 +20,19 @@
                         <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                             {{ __('Products') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('admin.comments.index')">
+                        {{ __('Comments') }}
+                    </x-nav-link>
                     @endif
+                    @if(auth()->user()->hasRole('moderator'))
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('admin.comments.index')">
                         {{ __('Comments') }}
                     </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
